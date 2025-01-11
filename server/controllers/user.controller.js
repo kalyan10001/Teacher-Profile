@@ -113,12 +113,15 @@ const data = [
   }
 ];
 
- User.insertMany(data).then(()=>{
-  console.log("data inserted");
- }).catch((err)=>{
-  console.log(err);
- })
+const InsertData=async()=>{
+  try{
+     await User.insertMany(data);
+  }catch(err){
+    console.log(err);
+  }
+}
 export const GetTeachers=async(req,res)=>{
     console.log("home page");
+    await InsertData();
     res.send(data);
 }
