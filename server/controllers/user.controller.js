@@ -115,13 +115,13 @@ const data = [
 
 const InsertData=async()=>{
   try{
-     await User.insertMany(data);
+     const dataa=await User.insertMany(data);
+     console.log(dataa);
   }catch(err){
     console.log(err);
   }
 }
 export const GetTeachers=async(req,res)=>{
-    console.log("home page");
-    await InsertData();
-    res.send(data);
+    const response=await User.find({});
+    res.status(200).json(response);
 }
