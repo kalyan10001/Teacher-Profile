@@ -1,127 +1,142 @@
 import { User } from "../db-schema/user.schema.js";
 
-const data = [
+const teacherData = [
   {
     id: "T001",
     name: "Ram Kumar",
-    Subject: "Mathematics",
+    subject: "Mathematics",
     email: "ram.kumar@example.com",
     phone: 9876543210,
-    profilepicture: "ram_profile.jpg",
+    profilePicture: "ram_profile.jpg",
     bio: "Passionate about teaching Mathematics.",
     experience: "5 years",
-    classeshandled: ["Class 10", "Class 12"]
+    classesHandled: ["Class 10", "Class 12"],
   },
   {
     id: "T002",
     name: "Kiran Reddy",
-    Subject: "Physics",
+    subject: "Physics",
     email: "kiran.reddy@example.com",
     phone: 9876543211,
-    profilepicture: "kiran_profile.jpg",
+    profilePicture: "kiran_profile.jpg",
     bio: "Physics enthusiast with 7 years of experience.",
     experience: "7 years",
-    classeshandled: ["Class 11", "Class 12"]
+    classesHandled: ["Class 11", "Class 12"],
   },
   {
     id: "T003",
     name: "Ganesh Rao",
-    Subject: "Chemistry",
+    subject: "Chemistry",
     email: "ganesh.rao@example.com",
     phone: 9876543212,
-    profilepicture: "ganesh_profile.jpg",
+    profilePicture: "ganesh_profile.jpg",
     bio: "Dedicated Chemistry teacher.",
     experience: "8 years",
-    classeshandled: ["Class 9", "Class 10"]
+    classesHandled: ["Class 9", "Class 10"],
   },
   {
     id: "T004",
     name: "Lakshmi Devi",
-    Subject: "Biology",
+    subject: "Biology",
     email: "lakshmi.devi@example.com",
     phone: 9876543213,
-    profilepicture: "lakshmi_profile.jpg",
+    profilePicture: "lakshmi_profile.jpg",
     bio: "Expert in Botany and Zoology.",
     experience: "6 years",
-    classeshandled: ["Class 11", "Class 12"]
+    classesHandled: ["Class 11", "Class 12"],
   },
   {
     id: "T005",
     name: "Ravi Teja",
-    Subject: "English",
+    subject: "English",
     email: "ravi.teja@example.com",
     phone: 9876543214,
-    profilepicture: "ravi_profile.jpg",
+    profilePicture: "ravi_profile.jpg",
     bio: "Specialized in English Literature.",
     experience: "4 years",
-    classeshandled: ["Class 8", "Class 10"]
+    classesHandled: ["Class 8", "Class 10"],
   },
   {
     id: "T006",
     name: "Sita Ram",
-    Subject: "Telugu",
+    subject: "Telugu",
     email: "sita.ram@example.com",
     phone: 9876543215,
-    profilepicture: "sita_profile.jpg",
+    profilePicture: "sita_profile.jpg",
     bio: "Dedicated Telugu teacher.",
     experience: "10 years",
-    classeshandled: ["Class 9", "Class 10"]
+    classesHandled: ["Class 9", "Class 10"],
   },
   {
     id: "T007",
     name: "Anjali Naidu",
-    Subject: "Social Studies",
+    subject: "Social Studies",
     email: "anjali.naidu@example.com",
     phone: 9876543216,
-    profilepicture: "anjali_profile.jpg",
+    profilePicture: "anjali_profile.jpg",
     bio: "History and Civics expert.",
     experience: "3 years",
-    classeshandled: ["Class 6", "Class 8"]
+    classesHandled: ["Class 6", "Class 8"],
   },
   {
     id: "T008",
     name: "Naveen Chandra",
-    Subject: "Computer Science",
+    subject: "Computer Science",
     email: "naveen.chandra@example.com",
     phone: 9876543217,
-    profilepicture: "naveen_profile.jpg",
+    profilePicture: "naveen_profile.jpg",
     bio: "Programming and IT specialist.",
     experience: "5 years",
-    classeshandled: ["Class 11", "Class 12"]
+    classesHandled: ["Class 11", "Class 12"],
   },
   {
     id: "T009",
     name: "Rohit Sharma",
-    Subject: "Physical Education",
+    subject: "Physical Education",
     email: "rohit.sharma@example.com",
     phone: 9876543218,
-    profilepicture: "rohit_profile.jpg",
+    profilePicture: "rohit_profile.jpg",
     bio: "Expert in fitness and physical education.",
     experience: "7 years",
-    classeshandled: ["Class 6", "Class 7"]
+    classesHandled: ["Class 6", "Class 7"],
   },
   {
     id: "T010",
     name: "Mahesh Babu",
-    Subject: "Economics",
+    subject: "Economics",
     email: "mahesh.babu@example.com",
     phone: 9876543219,
-    profilepicture: "mahesh_profile.jpg",
+    profilePicture: "mahesh_profile.jpg",
     bio: "Economics teacher with a strong background in finance.",
     experience: "9 years",
-    classeshandled: ["Class 11", "Class 12"]
-  }
+    classesHandled: ["Class 11", "Class 12"],
+  },
 ];
+
 
 const InsertData=async()=>{
   try{
-     const dataa=await User.insertMany(data);
+     const dataa=await User.insertMany(teacherData);
      console.log(dataa);
   }catch(err){
     console.log(err);
   }
 }
+
+const deleteAllUsers = async () => {
+  try {
+    await User.deleteMany({});
+    console.log("All users deleted successfully.");
+  } catch (err) {
+    console.log("Error deleting users:", err);
+  }
+};
+
+
 export const GetTeachers=async(req,res)=>{
+    // await  InsertData();
+  //  await  deleteAllUsers();
+     
     const response=await User.find({});
     res.status(200).json(response);
 }
