@@ -30,8 +30,8 @@ Copy code
 ### 1. Clone the Repository
 
 ```bash
-git clone <repository-url>
-cd <project-folder>
+git clone https://github.com/kalyan10001/Teacher-Profile
+cd Teacher-Profile
 ```
 ### 2. Install Dependencies
 Backend (Server)
@@ -56,7 +56,7 @@ In the server/ folder, run:
 
 ```bash
 Copy code
-npm start
+npm run dev
 ```
 This will start the Express server, which connects to the MongoDB database.
 
